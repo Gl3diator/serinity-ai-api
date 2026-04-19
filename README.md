@@ -1,4 +1,27 @@
-# Serinity AI API
+<!-- PROJECT SHIELDS -->
+<p align="center">
+  <img src="https://img.shields.io/github/stars/Gl3diator/serinity-ai-api?style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/Gl3diator/serinity-ai-api?style=for-the-badge">
+  <img src="https://img.shields.io/github/issues/Gl3diator/serinity-ai-api?style=for-the-badge">
+  <img src="https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+</p>
+
+<h1 align="center">Serinity AI API</h1>
+<p align="center">
+  Local-first FastAPI microservice for multilingual emotion detection
+</p>
+
+---
+
+<!-- PROJECT LINKS -->
+<p align="center">
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#project-structure">Project Structure</a> •
+  <a href="#prerequisites">Prerequisites</a> •
+  <a href="#local-setup">Local Setup</a> •
+  <a href="#docker-setup">Docker Setup</a> •
+  <a href="#api-endpoints">API Endpoints</a>
+</p>
 
 Local-first FastAPI microservice for emotion detection using:
 
@@ -6,7 +29,18 @@ Local-first FastAPI microservice for emotion detection using:
 - **Task:** multi-label classification
 - **Input:** journal text content only
 
-## Project structure
+## Tech Stack
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+  <img src="https://img.shields.io/badge/Uvicorn-ASGI-4051B5?style=for-the-badge&logo=uvicorn&logoColor=white">
+  <img src="https://img.shields.io/badge/Transformers-Hugging%20Face-FFB000?style=for-the-badge&logo=huggingface&logoColor=white">
+  <img src="https://img.shields.io/badge/PyTorch-CPU-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+</p>
+
+## Project Structure
 
 ```text
 app/
@@ -14,16 +48,107 @@ app/
 requirements.txt
 .env.example
 README.md
+run-local-ai.sh          (Linux/macOS)
+run-local-ai.bat         (Windows CMD)
+run-local-ai.ps1         (Windows PowerShell)
 ```
 
+## Prerequisites
+
+### Linux/macOS
+- Python 3.11 or higher
+- pip (Python package manager)
+- Git (optional, for cloning)
+
+### Windows
+- Python 3.11 or higher (download from [python.org](https://www.python.org/downloads/))
+  - ⚠️ **Important:** Check "Add Python to PATH" during installation
+- pip (included with Python)
+- Git (optional, from [git-scm.com](https://git-scm.com/downloads))
+
 ## Local setup
+
+### Linux/macOS
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
+./run-local-ai.sh
+```
+
+Or run manually:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Windows (PowerShell)
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+.\run-local-ai.ps1
+```
+
+Or run manually:
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+### Windows (CMD)
+
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+pip install -r requirements.txt
+copy .env.example .env
+.\run-local-ai.bat
+```
+
+Or run manually:
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+pip install -r requirements.txt
+copy .env.example .env
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+## Docker setup
+
+### Linux/macOS
+
+```bash
+cp .env.example .env
+docker build -t serinity-ai-api:latest .
+docker run --rm --name serinity-ai-api --env-file .env -p 8000:8080 serinity-ai-api:latest
+```
+
+### Windows (PowerShell)
+
+```powershell
+Copy-Item .env.example .env
+docker build -t serinity-ai-api:latest .
+docker run --rm --name serinity-ai-api --env-file .env -p 8000:8080 serinity-ai-api:latest
+```
+
+### Windows (CMD)
+
+```bat
+copy .env.example .env
+docker build -t serinity-ai-api:latest .
+docker run --rm --name serinity-ai-api --env-file .env -p 8000:8080 serinity-ai-api:latest
 ```
 
 ## API endpoints
