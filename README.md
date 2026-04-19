@@ -1,4 +1,27 @@
-# Serinity AI API
+<!-- PROJECT SHIELDS -->
+<p align="center">
+  <img src="https://img.shields.io/github/stars/Gl3diator/serinity-ai-api?style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/Gl3diator/serinity-ai-api?style=for-the-badge">
+  <img src="https://img.shields.io/github/issues/Gl3diator/serinity-ai-api?style=for-the-badge">
+  <img src="https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+</p>
+
+<h1 align="center">Serinity AI API</h1>
+<p align="center">
+  Local-first FastAPI microservice for multilingual emotion detection
+</p>
+
+---
+
+<!-- PROJECT LINKS -->
+<p align="center">
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#project-structure">Project Structure</a> •
+  <a href="#prerequisites">Prerequisites</a> •
+  <a href="#local-setup">Local Setup</a> •
+  <a href="#docker-setup">Docker Setup</a> •
+  <a href="#api-endpoints">API Endpoints</a>
+</p>
 
 Local-first FastAPI microservice for emotion detection using:
 
@@ -6,7 +29,18 @@ Local-first FastAPI microservice for emotion detection using:
 - **Task:** multi-label classification
 - **Input:** journal text content only
 
-## Project structure
+## Tech Stack
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/FastAPI-API-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+  <img src="https://img.shields.io/badge/Uvicorn-ASGI-4051B5?style=for-the-badge&logo=uvicorn&logoColor=white">
+  <img src="https://img.shields.io/badge/Transformers-Hugging%20Face-FFB000?style=for-the-badge&logo=huggingface&logoColor=white">
+  <img src="https://img.shields.io/badge/PyTorch-CPU-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+</p>
+
+## Project Structure
 
 ```text
 app/
