@@ -14,16 +14,107 @@ app/
 requirements.txt
 .env.example
 README.md
+run-local-ai.sh          (Linux/macOS)
+run-local-ai.bat         (Windows CMD)
+run-local-ai.ps1         (Windows PowerShell)
 ```
 
+## Prerequisites
+
+### Linux/macOS
+- Python 3.11 or higher
+- pip (Python package manager)
+- Git (optional, for cloning)
+
+### Windows
+- Python 3.11 or higher (download from [python.org](https://www.python.org/downloads/))
+  - ⚠️ **Important:** Check "Add Python to PATH" during installation
+- pip (included with Python)
+- Git (optional, from [git-scm.com](https://git-scm.com/downloads))
+
 ## Local setup
+
+### Linux/macOS
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
+./run-local-ai.sh
+```
+
+Or run manually:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Windows (PowerShell)
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+.\run-local-ai.ps1
+```
+
+Or run manually:
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+### Windows (CMD)
+
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+pip install -r requirements.txt
+copy .env.example .env
+.\run-local-ai.bat
+```
+
+Or run manually:
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+pip install -r requirements.txt
+copy .env.example .env
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+## Docker setup
+
+### Linux/macOS
+
+```bash
+cp .env.example .env
+docker build -t serinity-ai-api:latest .
+docker run --rm --name serinity-ai-api --env-file .env -p 8000:8080 serinity-ai-api:latest
+```
+
+### Windows (PowerShell)
+
+```powershell
+Copy-Item .env.example .env
+docker build -t serinity-ai-api:latest .
+docker run --rm --name serinity-ai-api --env-file .env -p 8000:8080 serinity-ai-api:latest
+```
+
+### Windows (CMD)
+
+```bat
+copy .env.example .env
+docker build -t serinity-ai-api:latest .
+docker run --rm --name serinity-ai-api --env-file .env -p 8000:8080 serinity-ai-api:latest
 ```
 
 ## API endpoints
